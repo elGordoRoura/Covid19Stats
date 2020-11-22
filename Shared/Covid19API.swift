@@ -15,11 +15,13 @@ enum Covid19APIError: Error {
     case noData
 }
 
+
 protocol Covid19RepositoryService {
     func getGlobalTotalCount(completion: @escaping (Result<CaseStats, Covid19APIError>) -> ())
     func getAllCountries(completion: @escaping (Result<[Country], Covid19APIError>) -> ())
     func getTotalCount(countryId: String, completion: @escaping (Result<CountryTotalCase, Covid19APIError>) -> ())
 }
+
 
 class Covid19APIService: Covid19RepositoryService  {
 

@@ -11,11 +11,13 @@ import WidgetKit
 struct GlobalTotalStatsTimelineProvider: TimelineProvider {
     typealias Entry = TotalCaseEntry
     
-    let service = Covid19APIService.shared
+    let service     = Covid19APIService.shared
+    
     
     func placeholder(in context: Context) -> TotalCaseEntry {
         TotalCaseEntry.placeholder
     }
+    
     
     func getSnapshot(in context: Context, completion: @escaping (TotalCaseEntry) -> Void) {
         if context.isPreview {
@@ -33,6 +35,7 @@ struct GlobalTotalStatsTimelineProvider: TimelineProvider {
         }
     }
     
+    
     func getTimeline(in context: Context, completion: @escaping (Timeline<TotalCaseEntry>) -> Void) {
         fetchTotalGlobalCaseStats { (result) in
             switch result {
@@ -46,6 +49,7 @@ struct GlobalTotalStatsTimelineProvider: TimelineProvider {
             }
         }
     }
+    
     
     private func fetchTotalGlobalCaseStats(completion: @escaping (Result<TotalCaseEntry, Error>) -> ()) {
         service.getGlobalTotalCount { (result) in

@@ -16,14 +16,20 @@ struct PieSlice: Identifiable {
     var color: Color
 }
 
+
 public struct PieChartCell : View {
+    
     @State private var show:Bool = false
+    
     var rect: CGRect
+    
     var radius: CGFloat {
         return min(rect.width, rect.height)/2
     }
+    
     var startDeg: Double
     var endDeg: Double
+    
     var path: Path {
         var path = Path()
         path.addArc(center:rect.mid , radius:self.radius, startAngle: Angle(degrees: self.startDeg), endAngle: Angle(degrees: self.endDeg), clockwise: false)
@@ -31,6 +37,7 @@ public struct PieChartCell : View {
         path.closeSubpath()
         return path
     }
+    
     var index: Int
     var backgroundColor:Color
     var accentColor:Color
@@ -56,6 +63,7 @@ public struct PieChartCell : View {
         }
     }
 }
+
 
 extension CGRect {
     var mid: CGPoint {

@@ -9,8 +9,10 @@ import SwiftUI
 import WidgetKit
 
 struct StatsWidgetMedium: View {
+
     let entry: TotalCaseEntry
     
+
     var body: some View {
         VStack(spacing: 0) {
             TitleDateHeader(title: entry.totalCount.title, date: entry.date)
@@ -22,6 +24,7 @@ struct StatsWidgetMedium: View {
         .redacted(reason: entry.isPlaceHolder ? .placeholder : .init())
     }
 }
+
 
 struct StatsWidgetMedium_Previews: PreviewProvider {
     static var previews: some View {

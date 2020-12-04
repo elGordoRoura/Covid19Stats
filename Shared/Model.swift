@@ -12,10 +12,11 @@ struct DailySummaryCaseStas: Decodable {
     let countries: [CaseStats]
     
     enum CodingKeys: String, CodingKey {
-        case global = "Global"
-        case countries = "Countries"
+        case global     = "Global"
+        case countries  = "Countries"
     }
 }
+
 
 struct CaseStats: Decodable {
     let id: String?
@@ -30,18 +31,19 @@ struct CaseStats: Decodable {
     let date: Date?
     
     enum CodingKeys: String, CodingKey {
-        case id = "Slug"
-        case name = "Country"
-        case iso = "ISO2"
-        case newConfirmed = "NewConfirmed"
+        case id             = "Slug"
+        case name           = "Country"
+        case iso            = "ISO2"
+        case newConfirmed   = "NewConfirmed"
         case totalConfirmed = "TotalConfirmed"
-        case newDeaths = "NewDeaths"
-        case totalDeaths = "TotalDeaths"
-        case newRecovered = "NewRecovered"
+        case newDeaths      = "NewDeaths"
+        case totalDeaths    = "TotalDeaths"
+        case newRecovered   = "NewRecovered"
         case totalRecovered = "TotalRecovered"
-        case date = "Date"
+        case date           = "Date"
     }
 }
+
 
 struct CountryTotalCase: Decodable {
     let country: String
@@ -52,14 +54,15 @@ struct CountryTotalCase: Decodable {
     let date: Date
     
     enum CodingKeys: String, CodingKey {
-        case country = "Country"
-        case confirmed = "Confirmed"
-        case deaths = "Deaths"
-        case recovered = "Recovered"
-        case active = "Active"
-        case date = "Date"
+        case country    = "Country"
+        case confirmed  = "Confirmed"
+        case deaths     = "Deaths"
+        case recovered  = "Recovered"
+        case active     = "Active"
+        case date       = "Date"
     }
 }
+
 
 struct Country: Decodable {
     let id: String
@@ -67,11 +70,12 @@ struct Country: Decodable {
     let iso: String
     
     enum CodingKeys: String, CodingKey {
-        case id = "Slug"
-        case name = "Country"
-        case iso = "ISO2"
+        case id     = "Slug"
+        case name   = "Country"
+        case iso    = "ISO2"
     }
 }
+
 
 struct TotalCaseCount {
     let title: String

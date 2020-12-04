@@ -9,7 +9,9 @@ import SwiftUI
 import WidgetKit
 
 struct StatsWidgetLarge: View {
+    
     let entry: TotalCaseEntry
+
     
     var body: some View {
         VStack(spacing: 0) {
@@ -19,6 +21,7 @@ struct StatsWidgetLarge: View {
         .redacted(reason: entry.isPlaceHolder ? .placeholder : .init())
     }
 }
+
 
 struct StatsWidgetLarge_Previews: PreviewProvider {
     static var previews: some View {

@@ -9,9 +9,11 @@ import SwiftUI
 import WidgetKit
 
 struct TitleDateHeader: View {
+
     let title: String
     let date: Date
     
+
     var body: some View {
         HStack {
             Text(title)
@@ -22,6 +24,7 @@ struct TitleDateHeader: View {
         .minimumScaleFactor(0.7)
     }
 }
+
 
 struct TitleDateHeader_Previews: PreviewProvider {
     static var previews: some View {

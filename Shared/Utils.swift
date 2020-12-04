@@ -9,16 +9,16 @@ import Foundation
 
 struct Utils {
     static let numberFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
+        let formatter                   = NumberFormatter()
+        formatter.numberStyle           = .decimal
         formatter.maximumFractionDigits = 2
-        formatter.usesGroupingSeparator  = true
+        formatter.usesGroupingSeparator = true
         return formatter
     }()
 }
 
+
 extension String {
-    
     var flag: String {
         let base : UInt32 = 127397
         var s = ""

@@ -9,9 +9,11 @@ import SwiftUI
 import WidgetKit
 
 struct CasePieRow: View {
+
     let totalCount: TotalCaseCount
     let date: Date
     
+
     var body: some View {
         HStack {
             PieChartView(
@@ -52,6 +54,7 @@ struct CasePieRow: View {
         .padding()
     }
 }
+
 
 struct CasePieRow_Previews: PreviewProvider {
     static var previews: some View {

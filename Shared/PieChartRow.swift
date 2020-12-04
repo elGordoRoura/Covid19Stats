@@ -7,24 +7,26 @@
 
 import SwiftUI
 
-public struct PieChartRow : View {
+public struct PieChartRow: View {
+    
     var data: [(value: Double, color: Color)]
     var backgroundColor: Color
     var accentColor: Color
     var slices: [PieSlice] {
-        var tempSlices:[PieSlice] = []
-        var lastEndDeg:Double = 0
-        let values = data.map { $0.value }
-        let maxValue = values.reduce(0, +)
+        var tempSlices: [PieSlice]  = []
+        var lastEndDeg: Double      = 0
+        let values                  = data.map { $0.value }
+        let maxValue                = values.reduce(0, +)
         for slice in data {
-            let normalized:Double = Double(slice.value)/Double(maxValue)
-            let startDeg = lastEndDeg
-            let endDeg = lastEndDeg + (normalized * 360)
-            lastEndDeg = endDeg
+            let normalized: Double  = Double(slice.value)/Double(maxValue)
+            let startDeg            = lastEndDeg
+            let endDeg              = lastEndDeg + (normalized * 360)
+            lastEndDeg              = endDeg
             tempSlices.append(PieSlice(startDeg: startDeg, endDeg: endDeg, value: slice.value, normalizedValue: normalized, color: slice.color))
         }
         return tempSlices
     }
+    
     
     public var body: some View {
         GeometryReader { geometry in

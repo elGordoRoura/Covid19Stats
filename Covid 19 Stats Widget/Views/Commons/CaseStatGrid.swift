@@ -9,12 +9,14 @@ import SwiftUI
 import WidgetKit
 
 struct CaseStatGrid: View {
+
     let totalCount: TotalCaseCount
     let columns: [GridItem] = [
         .init(.flexible(), spacing: 0),
         .init(.flexible(), spacing: 0)
     ]
     
+
     var body: some View {
         VStack {
             GeometryReader { proxy in
@@ -28,6 +30,7 @@ struct CaseStatGrid: View {
         }
     }
 }
+
 
 struct CaseStatGrid_Previews: PreviewProvider {
     static var previews: some View {

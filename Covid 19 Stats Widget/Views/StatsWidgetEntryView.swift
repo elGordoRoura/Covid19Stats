@@ -9,9 +9,11 @@ import SwiftUI
 import WidgetKit
 
 struct StatsWidgetEntryView: View {
+    
     let entry: TotalCaseEntry
     
     @Environment(\.widgetFamily) var family
+
     
     var body: some View {
         switch family {
@@ -24,6 +26,7 @@ struct StatsWidgetEntryView: View {
         }
     }
 }
+
 
 struct StatsWidgetEntryView_Previews: PreviewProvider {
     static var previews: some View {

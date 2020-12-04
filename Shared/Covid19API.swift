@@ -25,16 +25,18 @@ protocol Covid19RepositoryService {
 
 class Covid19APIService: Covid19RepositoryService  {
 
-    static let shared = Covid19APIService()
-    private let baseAPIURL = "https://api.covid19api.com"
-    private let urlSession = URLSession.shared
+    static let shared       = Covid19APIService()
+    private let baseAPIURL  = "https://api.covid19api.com"
+    private let urlSession  = URLSession.shared
+    
     private let jsonDecoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        let decoder                     = JSONDecoder()
+        decoder.dateDecodingStrategy    = .iso8601
         return decoder
     }()
         
     private init() {}
+    
     
     func getAllCountries(completion: @escaping (Result<[Country], Covid19APIError>) -> ()) {
         guard let url = URL(string: "\(baseAPIURL)/countries") else {
@@ -43,6 +45,7 @@ class Covid19APIService: Covid19RepositoryService  {
         }
         executeDataTaskAndDecode(with: url, completion: completion)
     }
+    
     
     func getGlobalTotalCount(completion: @escaping (Result<CaseStats, Covid19APIError>) -> ()) {
         guard let url = URL(string: "\(baseAPIURL)/summary") else {
@@ -54,17 +57,20 @@ class Covid19APIService: Covid19RepositoryService  {
             switch result {
             case .success(let response):
                 completion(.success(response.global))
+    
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
     
+    
     func getTotalCount(countryId: String, completion: @escaping (Result<CountryTotalCase, Covid19APIError>) -> ()) {
         guard let url = URL(string: "\(baseAPIURL)/total/country/\(countryId)") else {
             completion(.failure(.invalidURL))
             return
         }
+        
         executeDataTaskAndDecode(with: url) { (result: Result<[CountryTotalCase], Covid19APIError>) in
             switch result {
             case .success(let response):
@@ -73,11 +79,13 @@ class Covid19APIService: Covid19RepositoryService  {
                 } else {
                     completion(.failure(.noData))
                 }
+    
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
+    
     
     private func executeDataTaskAndDecode<D: Decodable>(with url: URL, completion: @escaping (Result<D, Covid19APIError>) -> ()) {
         urlSession.dataTask(with: url) { (data, response, error) in
